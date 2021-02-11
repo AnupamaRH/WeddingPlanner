@@ -113,7 +113,7 @@ import java.sql.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.BorderFactory;
-public class Project 
+public class Project extends JFrame
 {
 	int flag=3;
 	JFrame f;

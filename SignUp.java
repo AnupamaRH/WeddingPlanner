@@ -100,68 +100,44 @@ public class SignUp extends JFrame
 		p7.setBackground(yelow);
 
 		
-		/*b1.addActionListener(new ActionListener() 
+		b1.addActionListener(new ActionListener() 
 		{
             public void actionPerformed(ActionEvent e) {
-                String emailId = email.getText();
-                String password = passf.getText();
-                String email,password1;
-
-
+                String emailId = t2.getText();
+                String password =new String(passf.getPassword());
+				String name=namef.getText();
+                //String name_database,email,password1;
+				try
+        		{
+            		Class.forName("org.postgresql.Driver");
+        		}
+        		catch(Exception ex)
+        		{
+          		 System.out.println("not found");
+        		}
                 try {
                 	ResultSet rs;
-                    Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Bus", "postgres", "123456");
-                    PreparedStatement pst = null;
+                    Connection connection = DriverManager.getConnection("jdbc:postgresql://ziggy.db.elephantsql.com/","neyalvyx","Wi79_4saB3Ys3HYCbvzmjod1Lrme4E_1");
+                    Statement st = null;
                     
-                    pst = connection.prepareStatement("SELECT * FROM public.\"booking\";");
-//                  }
-                  rs = pst.executeQuery();
-                  while(rs.next())
-                  {
-             	     email = rs.getString("email");
-  
-          	     if(emailId.equals(email)) {
-          	    	 JOptionPane.showMessageDialog(b1, "Welcome");
-          	    	 dispose();
-          	    	 Complete comp=new Complete(email);
-          	    	 comp.setVisible(true);
-          	    	 flag=0;
-          	    	 break;
-          	     }
-          	     else {
-          	    	 flag=-1;
-//          	    	 JOptionPane.showMessageDialog(btnNewButton, "account indakada");
-          	     }
-                  }
-                    
-                  if(flag==-1) {
-                    pst = connection.prepareStatement("SELECT * FROM public.\"register\";");
-//                    }
-                    rs = pst.executeQuery();
-                    while(rs.next())
-                    {
-               	     email = rs.getString("email");
-            	     password1 = rs.getString("pass");
-    
-            	     if(emailId.equals(email) && password.equals(password1)) {
-            	    	 JOptionPane.showMessageDialog(b1, "Welcome");
-            	    	 dispose();
-            	    	 Book booking=new Book(email);
-            	    	 booking.setVisible(true);
-            	    	 break;
-            	     }
-            	     else {
-//            	    	 JOptionPane.showMessageDialog(btnNewButton, "account indakada");
-            	     }
-                    }
-                  }
+                    st = connection.createStatement();
+                  int res = st.executeUpdate("INSERT INTO register VALUES('"+name + "','"+emailId+ "','" +password+"')");
+				  if (res == 0)
+					  JOptionPane.showMessageDialog(b1, "This is alredy exist");
+				   else 
+				    {
+					  JOptionPane.showMessageDialog(b1,"Welcome, Your account is sucessfully created");
+					  dispose();
+					  Project login=new Project();
+					  login.setVisible(true);
+					}
                     connection.close();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
             }
             
-        });*/
+        });
 
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

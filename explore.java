@@ -24,6 +24,7 @@ class explore extends JComponent
     datep.add (date);
     datep.add(month);
     datep.add(dates);
+    
    //for no of people
    ppl=new JLabel("     No.of People(max):   ");
    b200=new JRadioButton("200");    
@@ -34,6 +35,7 @@ class explore extends JComponent
    bg.add(b200);bg.add(b500);bg.add(b1000);bg.add(babove);
    JPanel pplp=new JPanel();
    pplp.add(ppl);pplp.add(b200);pplp.add(b500);pplp.add(b1000);pplp.add(babove);
+
    //for venue
    venue=new JLabel("                                                Venue:   ");
    badlux=new JRadioButton("Adlux");
@@ -45,6 +47,7 @@ class explore extends JComponent
    bg1.add(badlux);bg1.add(bcial);bg1.add(babad);bg1.add(btown);bg1.add(bflora);
    JPanel venuep=new JPanel();
    venuep.add(venue);venuep.add(badlux);venuep.add(bcial);venuep.add(babad);venuep.add(btown);venuep.add(bflora);
+
     //for Decoration
     dec=new JLabel("                Decoration:   ");
     bvint=new JRadioButton("Vintage");
@@ -54,6 +57,7 @@ class explore extends JComponent
     bg2.add(btrad);bg2.add(bvint);bg2.add(bclas);
     JPanel decp=new JPanel();
     decp.add(dec);decp.add(bvint);decp.add(btrad);decp.add(bclas);
+
      //for food
      food=new JLabel("                 Food:  ");
      bprem=new JRadioButton("Premium");
@@ -63,6 +67,7 @@ class explore extends JComponent
      bg3.add(bprem);bg3.add(bgold);bg3.add(bsilv);
      JPanel foodp =new JPanel();
      foodp.add(food);foodp.add(bprem);foodp.add(bgold);foodp.add(bsilv);
+
      //for camera and video
      cam=new JLabel("Camera & Video:");
      bprem1=new JRadioButton("Premium");
@@ -72,6 +77,7 @@ class explore extends JComponent
      bg4.add(bprem1);bg4.add(bgold1);bg4.add(bsilv1);
      JPanel camp =new JPanel();
      camp.add(cam);camp.add(bprem1);camp.add(bgold1);camp.add(bsilv1);
+
     //for bill
     bill=new JButton("Get My Bill");
     
