@@ -238,7 +238,7 @@ public class Project extends JFrame
            }
            else {
                flag=-1;
-//          	    	 JOptionPane.showMessageDialog(btnNewButton, "please SignIn first");
+      	    //	 JOptionPane.showMessageDialog(b1, "please SignIn first");
            }
           }
             
@@ -259,7 +259,7 @@ public class Project extends JFrame
                  break;
              }
              else {
-//            	    	 JOptionPane.showMessageDialog(btnNewButton, "Please create an account");
+    	    	 JOptionPane.showMessageDialog(b1, "Please create an account");
              }
             }
           }

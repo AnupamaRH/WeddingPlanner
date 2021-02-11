@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.*;
-class explore extends JComponent
+import java.awt.event.*;
+import java.sql.Connection;
+import java.util.Enumeration;
+import java.sql.*;
+class explore extends JComponent 
 {
     private static final long serialVersionUID = 1L;
     JFrame f=new JFrame();
@@ -10,10 +13,11 @@ class explore extends JComponent
     JButton bill;
     Color mainDark = Color.decode("#1C3558");
     Color mainLight = Color.decode("#516F8C");
-
-
+    String emailhere,attend,ven,deco,fud,camera;
+    Connection conn;
   explore(String email)
   {
+    emailhere=email;
     //for date
      date=new JLabel("Date:       ");
      String s1[]={"Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"};
@@ -83,8 +87,6 @@ class explore extends JComponent
     
     JPanel p=new JPanel();
     p.add(datep);p.add(pplp);p.add(venuep);p.add(decp);p.add(foodp);p.add(camp);p.add(bill);
-    //p.setLayout(new BoxLayout(p,BoxLayout.Y_AXIS)); 
-    //p.setLayout(new GridLayout(10,1));;
     GridLayout layout = new GridLayout(10,1);
     layout.setVgap(25);
     p.setLayout(layout);
@@ -95,9 +97,60 @@ class explore extends JComponent
     f.setSize(700,800);
     p.setBackground(mainDark);
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  }
-//  public static void main(String args[])
-//  {
-//      new explore();
-//  }   
+
+    bill.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) 
+      {
+        //venue
+        for (Enumeration<AbstractButton> buttons = bg1.getElements(); buttons.hasMoreElements();) {
+          AbstractButton button = buttons.nextElement();
+  
+          if (button.isSelected())
+          {
+              ven=button.getText();
+          }
+        }
+        //attendees
+        for (Enumeration<AbstractButton> buttonsat = bg.getElements(); buttonsat.hasMoreElements();) {
+          AbstractButton buttonat = buttonsat.nextElement();
+  
+          if (buttonat.isSelected())
+            attend=buttonat.getText();
+        }
+        //food
+        for (Enumeration<AbstractButton> buttonfud = bg3.getElements(); buttonfud.hasMoreElements();) {
+          AbstractButton bfud = buttonfud.nextElement();
+  
+          if (bfud.isSelected())
+            fud=bfud.getText();
+        }
+        //camera
+        for (Enumeration<AbstractButton> buttonscam = bg4.getElements(); buttonscam.hasMoreElements();) {
+          AbstractButton buttonc = buttonscam.nextElement();
+  
+          if (buttonc.isSelected()) 
+            camera=buttonc.getText();
+        }
+        //decorations
+        for (Enumeration<AbstractButton> butdec = bg2.getElements(); butdec.hasMoreElements();) {
+          AbstractButton decbut = butdec.nextElement();
+  
+          if (decbut.isSelected()) {
+            deco=decbut.getText();
+          }
+        }
+        try{
+        Connection conn = DriverManager.getConnection("jdbc:postgresql://ziggy.db.elephantsql.com/","neyalvyx","Wi79_4saB3Ys3HYCbvzmjod1Lrme4E_1");
+        java.sql.Statement st=conn.createStatement();
+        String query="INSERT INTO exploredb VALUES(\'"+month.getSelectedItem()+"-"+dates.getSelectedItem()+"','"+emailhere+"',"+attend+",'"+ven+"','"+fud+"','"+camera+"','"+deco+"');";
+        System.out.println(query);
+        st.executeUpdate(query);
+        }
+        catch(Exception e1)
+        {
+          System.out.println("ERROR");
+        }
+      }
+    });
+  }  
 }
