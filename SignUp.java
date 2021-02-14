@@ -99,7 +99,13 @@ public class SignUp extends JFrame
 		p11.setBackground(yelow);
 		p7.setBackground(yelow);
 
-		
+		si.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				f.dispose();
+				Project pro=new Project();
+				pro.setVisible(true);
+			}
+		});
 		b1.addActionListener(new ActionListener() 
 		{
             public void actionPerformed(ActionEvent e) {
