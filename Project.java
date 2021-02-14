@@ -227,8 +227,9 @@ public class Project extends JFrame
           while(rs.next())
           {
               emailId = rs.getString("email");
+			  password1 = rs.getString("password");
 
-           if(emailId.equals(t1.getText())) {
+           if(emailId.equals(t1.getText())&& password.equals(password1)) {
                JOptionPane.showMessageDialog(b1, "Welcome");
                f.dispose();
                explore comp=new explore(emailId);
@@ -256,10 +257,11 @@ public class Project extends JFrame
                  f.dispose();
                  explore exploring=new explore(emailid);
                  exploring.setVisible(true);
+				 flag=0;
                  break;
              }
              else {
-    	    	 JOptionPane.showMessageDialog(b1, "Please create an account");
+    	    	 JOptionPane.showMessageDialog(b1, "INVALID email or password !\n Are you new? Then please create an account");
              }
             }
           }
