@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-class Bill 
+public class Bill extends JFrame
 {
- public static void main(String args[])
+ Bill()
   {
    JFrame f=new JFrame("Bill");
    JLabel l1,l2,l3,l4,l5,l6;
@@ -34,5 +34,6 @@ class Bill
    f.setSize(300,300);
    f.setLayout(null);
    f.setVisible(true);
+   f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
 }
