@@ -53,10 +53,12 @@ class explore extends JComponent
                 AbstractButton buttonat = buttonsat.nextElement();
                 System.out.println(buttonat.getText());
                 System.out.println(rst.getString("venue"));
-                if ((buttonat.getText()).compareToIgnoreCase(rst.getString("venue"))==0);
+                boolean a=(buttonat.getText()).equals(rst.getString("venue"));
+                System.out.println(a);
+                if (a==true)
                 {
                   buttonat.setEnabled(false);
-                  
+                  continue;
                 }
               }
             }
