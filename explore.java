@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,7 +6,7 @@ import java.util.Enumeration;
 import java.sql.*;
 class explore extends JComponent 
 {
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
     JFrame f=new JFrame("Plan Your Event");
     JLabel date,ppl,venue,dec,food,cam;
     JRadioButton b200,b500,b1000,babove,bvint,btrad,bclas,badlux,babad,bflora,btown,bcial,bprem,bsilv,bgold,bprem1,bsilv1,bgold1;
@@ -184,12 +183,20 @@ class explore extends JComponent
             deco=decbut.getText();
           }
         }
+        try
+   {
+       Class.forName("org.postgresql.Driver");
+   }
+   catch(Exception ex)
+   {
+      System.out.println("not found");
+   }
         try{
         Connection conn = DriverManager.getConnection("jdbc:postgresql://ziggy.db.elephantsql.com/","neyalvyx","Wi79_4saB3Ys3HYCbvzmjod1Lrme4E_1");
         java.sql.Statement st=conn.createStatement();
         String query="INSERT INTO exploredb VALUES(\'"+month.getSelectedItem()+"-"+dates.getSelectedItem()+"','"+emailhere+"',"+attend+",'"+ven+"','"+fud+"','"+camera+"','"+deco+"');";
+        int g=st.executeUpdate(query);
         System.out.println(query);
-        int rstt=st.executeUpdate(query);
         Bill b=new Bill();
         b.setVisible(true);
         f.dispose();

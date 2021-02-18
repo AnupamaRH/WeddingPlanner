@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.MouseInputAdapter;
 import javax.swing.BorderFactory;
 public class Project extends JFrame
 {

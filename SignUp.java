@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.sql.*;
 public class SignUp extends JFrame
 {
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	JFrame f;
 	JTextField namef,t2,pht;
 	JLabel l1,name,pass,l4,l5,email,ph,si;
