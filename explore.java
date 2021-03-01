@@ -198,8 +198,8 @@ class explore extends JComponent
         int g=st.executeUpdate(query);
         System.out.println(query);
         Bill b=new Bill();
+	f.dispose();
         b.setVisible(true);
-        f.dispose();
         }
         catch(Exception e1)
         {
